@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Weather Dashboard</h1>
+    
+    <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <div class="input-group">
+                <input type="text" id="cityInput" class="form-control" placeholder="Enter city name">
+                <button class="btn btn-primary" onclick="searchWeather()">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="units" id="metric" value="metric" checked>
+                <label class="form-check-label" for="metric">Celsius</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="units" id="imperial" value="imperial">
+                <label class="form-check-label" for="imperial">Fahrenheit</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Current Weather -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Current Weather</h3>
+                </div>
+                <div class="card-body" id="currentWeather">
+                    <!-- Current weather data will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Weather Map -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Weather Map</h3>
+                </div>
+                <div class="card-body">
+                    <div id="weatherMap" style="height: 400px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forecast -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">5-Day Forecast</h3>
+                </div>
+                <div class="card-body">
+                    <div id="forecast" class="row">
+                        <!-- Forecast data will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
