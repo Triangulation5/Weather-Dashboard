@@ -1,9 +1,23 @@
 let currentUnit = 'metric';
 
+function showError(message) {
+    let errorDiv = document.getElementById('errorMessage');
+    if (!errorDiv) {
+        errorDiv = document.createElement('div');
+        errorDiv.id = 'errorMessage';
+        errorDiv.className = 'alert alert-danger text-center';
+        const container = document.querySelector('.container');
+        container.insertBefore(errorDiv, container.firstChild);
+    }
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+    setTimeout(() => { errorDiv.style.display = 'none'; }, 5000);
+}
+
 function searchWeather() {
     const city = document.getElementById('cityInput').value;
     if (!city) {
-        alert('Please enter a city name');
+        showError('Please enter a city name');
         return;
     }
     
@@ -19,12 +33,12 @@ function fetchWeatherData(city) {
                 updateCurrentWeather(data.current);
                 updateForecast(data.forecast);
             } else {
-                alert('Error: ' + data.error);
+                showError('Error: ' + data.error);
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('Failed to fetch weather data');
+            showError('Failed to fetch weather data');
         });
 }
 
